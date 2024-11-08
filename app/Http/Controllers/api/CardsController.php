@@ -26,7 +26,6 @@ class CardsController extends Controller
     public function index () {
 
         $id = "";
-
         $cardData = $this->modelCardsUsers->searchCards($id);
 
         return empty($cardData) 
@@ -42,12 +41,12 @@ class CardsController extends Controller
 
             $request->validate([
                 'number' => 'required|regex:/^[0-9]+$/|digits:12',
-                'balance' => 'required|regex:/^[0-9]*\,[0-9]+$/',
+                'balance' => 'required|regex:/^[0-9]+,[0-9]+$/',
                 'user' => 'required|numeric', 
             ], [
                 'number.regex' => 'The number field must contain only digits (no letters or special characters).',
                 'number.digits' => 'The number field must contain exactly 12 digits.',
-                'balance.regex' => 'The balance field must be a valid float number.',
+                'balance.regex' => 'The balance field must be a valid positive float number with a comma as a decimal separator.',
                 'user.numeric' => 'The type field must contain only numbers.',
             ]);
 
@@ -74,7 +73,6 @@ class CardsController extends Controller
 
 
                 $id = "";
-
                 $this->modelCardsUsers->insertUpdateCard($request, $id);
 
 
@@ -129,23 +127,23 @@ class CardsController extends Controller
 
         try {
 
-            $existingUser = $this->modelUsers->searchUser($id);
+            $existingCard = $this->modelCardsUsers->validateExistenceCard($id);
 
-            if (empty($existingUser)) {
+            if (empty($existingCard)) {
 
                 return response()->json([
-                    'warning' => 'Undefined User!',
-                ], 425);
+                    'warning' => 'Undefined Card!',
+                ], 429);
 
             } else {
 
                 $request->validate([
                     'number' => 'required|regex:/^[0-9]+$/|digits:12',
-                    'balance' => 'required|regex:/^[0-9]*\,[0-9]+$/',
+                    'balance' => 'required|regex:/^[0-9]+,[0-9]+$/',
                 ], [
                     'number.regex' => 'The number field must contain only digits (no letters or special characters).',
                     'number.digits' => 'The number field must contain exactly 12 digits.',
-                    'balance.regex' => 'The balance field must be a valid float number.',
+                    'balance.regex' => 'The balance field must be a valid positive float number with a comma as a decimal separator.',
                 ]);
 
 
@@ -153,9 +151,13 @@ class CardsController extends Controller
 
                 if (!empty($cardValidation)) {
 
-                    return response()->json([
-                        'warning' => 'Card already registered for the user ' . $cardValidation[0]->user . '!',
-                    ], 428);
+                    if ($id != $cardValidation[0]->id) {
+
+                        return response()->json([
+                            'warning' => 'Card already registered for the user ' . $cardValidation[0]->user . '!',
+                        ], 428);
+
+                    }
             
                 }
 
@@ -191,13 +193,13 @@ class CardsController extends Controller
 
         try {
 
-            $existingUser = $this->modelUsers->searchUser($id);
+            $existingCard = $this->modelCardsUsers->validateExistenceCard($id);
 
-            if (empty($existingUser)) {
+            if (empty($existingCard)) {
 
                 return response()->json([
-                    'warning' => 'Undefined User!',
-                ], 425);
+                    'warning' => 'Undefined Card!',
+                ], 429);
 
             } else {
 

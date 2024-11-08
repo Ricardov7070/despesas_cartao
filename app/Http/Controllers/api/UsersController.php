@@ -23,7 +23,6 @@ class UsersController extends Controller
     public function index () {
 
         $id = "";
-
         $userData =  $this->modelUsers->searchUser($id);
 
         return empty($userData) 
@@ -74,7 +73,6 @@ class UsersController extends Controller
 
 
             $id = "";
-
             $this->modelUsers->insertUpdateUser($request, $id);
 
 

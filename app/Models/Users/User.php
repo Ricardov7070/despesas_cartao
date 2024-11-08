@@ -21,31 +21,64 @@ class User extends Authenticatable
 
         if ($id) {
 
-            return DB::table('users')
+            $userRating = DB::table('users as us')
+                                ->join('type_users as tsu', 'tsu.id', '=', 'us.type_users_id')
+                                ->where('us.id', $id)
+                                ->whereNull('tsu.deleted_at')
+                                ->whereNull('us.deleted_at')
+                                ->select('tsu.description as description')
+                                ->first();
+
+            if (!empty($userRating) && $userRating->description == 'Administrator') {
+
+                return DB::table('users as us')
+                        ->join('type_users as tsu', 'tsu.id', '=', 'us.type_users_id')
+                        ->whereNull('us.deleted_at')
+                        ->whereNull('tsu.deleted_at')
                         ->select(
-                            'id',
-                            'name as user',
-                            'email',
-                            'password',
-                        DB::raw("DATE_FORMAT(created_at, '%d/%m/%Y') as creation")
-                            )
-                        ->where('id', $id)
-                        ->whereNull('deleted_at')
+                            'us.id as id',
+                            'us.name as user',
+                            'tsu.description as classification',
+                            'us.email as email',
+                            DB::raw("DATE_FORMAT(us.created_at, '%d/%m/%Y') as creation")
+                        )
                         ->get()
                         ->ToArray();
+
+            } else {
+
+                return DB::table('users as us')
+                        ->join('type_users as tsu', 'tsu.id', '=', 'us.type_users_id')
+                        ->where('us.id', $id)
+                        ->whereNull('us.deleted_at')
+                        ->whereNull('tsu.deleted_at')
+                        ->select(
+                            'us.id as id',
+                            'us.name as user',
+                            'tsu.description as classification',
+                            'us.email as email',
+                            DB::raw("DATE_FORMAT(us.created_at, '%d/%m/%Y') as creation")
+                        )
+                        ->get()
+                        ->ToArray();
+
+            }
            
         } else {
 
-            return DB::table('users')
+            return DB::table('users as us')
+                        ->join('type_users as tsu', 'tsu.id', '=', 'us.type_users_id')
+                        ->whereNull('us.deleted_at')
+                        ->whereNull('tsu.deleted_at')
                         ->select(
-                            'id',
-                            'name as user',
-                            'email',
-                            'password',
-                        DB::raw("DATE_FORMAT(created_at, '%d/%m/%Y') as creation")
-                            )
-                        ->whereNull('deleted_at')
-                        ->get();
+                            'us.id as id',
+                            'us.name as user',
+                            'tsu.description as classification',
+                            'us.email as email',
+                            DB::raw("DATE_FORMAT(us.created_at, '%d/%m/%Y') as creation")
+                        )
+                        ->get()
+                        ->ToArray();
 
         }
 
@@ -107,14 +140,39 @@ class User extends Authenticatable
     }
 
 
-    public function deleteUser ($id) {
+    public function deleteUser($id) {
+        
+        $idCards = DB::table('cards_users')
+            ->select('id')
+            ->where('users_id', $id)
+            ->whereNull('deleted_at')
+            ->get()
+            ->map(function ($card) {
+                return $card->id;
+            })
+            ->toArray();
+
 
         DB::table('users')
-                ->where('id', $id) 
-                ->whereNull('deleted_at')
-                ->update([
-                    'deleted_at' => now()
-                ]);
+            ->where('id', $id)
+            ->whereNull('deleted_at')
+            ->update([
+                'deleted_at' => now()
+            ]);
+
+        DB::table('cards_users')
+            ->where('users_id', $id)
+            ->whereNull('deleted_at')
+            ->update([
+                'deleted_at' => now()
+            ]);
+
+        DB::table('expenses_users')
+            ->whereIn('cards_users_id', $idCards)
+            ->whereNull('deleted_at')
+            ->update([
+                'deleted_at' => now()
+            ]);
 
     }
 

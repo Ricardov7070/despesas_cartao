@@ -52,6 +52,8 @@ Este projeto foi desenvolvido em uma aplicação Laravel para gerenciamento e ca
 
    Execute as migrações para criar as tabelas no banco de dados.
     `php artisan migrate`
+
+   Não esqueça de realizar as configurações do banco de dados desejado no arquivo .env antes de executar o comando!
     
 7. **Testar as Rotas da API:**
     
@@ -88,6 +90,8 @@ O projeto utiliza uma funcionalidade de envio de emails para cada interação qu
  - Exclusão de despesas dos usuários.
 
 - **Email:** Os emails são enviados utilizando um serviço do Laravel (PHPMailer) e pode ser configurado para usar o Mailtrap durante o desenvolvimento.
+
+Não esqueça de realizar as configurações do seu provedor de email SMTP no arquivo .env antes de usar essa funcionalidade!
 
 ## Roles e Permissões
 

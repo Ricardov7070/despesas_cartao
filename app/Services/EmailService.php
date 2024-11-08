@@ -33,7 +33,7 @@ class EmailService
     }
 
 
-    public function sendEmail ($to, $subject, $body, $from = null) {      
+    public function sendEmail ($to, $subject, $body, $from = null) {     
 
         try {   
 

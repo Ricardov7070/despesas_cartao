@@ -23,6 +23,17 @@ class CardsController extends Controller
     }
 
 
+    /**
+     * @OA\Get(
+     *     path="/api/cards_users",
+     *     summary="Lista todos os cartões cadastrados no sistema.",
+     *     tags={"Cartões"},
+     *     @OA\Response(
+     *         response=420,
+     *         description="No registration!"
+     *     ),
+     * )
+     */
     public function index () {
 
         $id = "";
@@ -35,6 +46,33 @@ class CardsController extends Controller
     }
 
 
+     /**
+     * @OA\Post(
+     *     path="/api/cards_users/",
+     *     summary="Insere na base de dados os registros do novo cartão.",
+     *     tags={"Cartões"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successfully Done!"
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Unexpected error!"
+     *     ),
+     *     @OA\Response(
+     *         response=424,
+     *         description="Request error, validate the data and try again!"
+     *     ),
+     *      @OA\Response(
+     *         response=425,
+     *         description="Undefined User!"
+     *     ),
+     *     @OA\Response(
+     *         response=428,
+     *         description="Card already registered for the user!"
+     *     ),
+     * )
+     */
     public function store (Request $request) {
 
         try {
@@ -100,6 +138,21 @@ class CardsController extends Controller
     }
 
 
+    /**
+     * @OA\Get(
+     *     path="/api/cards_users/{id_user}",
+     *     summary="Lista todos os cartões, somente do usuário selecionado.",
+     *     tags={"Cartões"},
+     *     @OA\Response(
+     *         response=420,
+     *         description="No registration!"
+     *     ),
+     *      @OA\Response(
+     *         response=425,
+     *         description="Undefined User!"
+     *     ),
+     * )
+     */
     public function show ($id)  {
         
         $existingUser = $this->modelUsers->searchUser($id);
@@ -123,6 +176,33 @@ class CardsController extends Controller
     }
 
   
+     /**
+     * @OA\Put(
+     *     path="/api/cards_users/{id_card}",
+     *     summary="Atualiza os dados somente do cartão selecionado já cadastrado.",
+     *     tags={"Cartões"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successfully Done!"
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Unexpected error!"
+     *     ),
+     *     @OA\Response(
+     *         response=424,
+     *         description="Request error, validate the data and try again!"
+     *     ),
+     *     @OA\Response(
+     *         response=428,
+     *         description="Card already registered for the user!"
+     *     ),
+     *      @OA\Response(
+     *         response=429,
+     *         description="Undefined Card!"
+     *     ),
+     * )
+     */
     public function update (Request $request, $id) {
 
         try {
@@ -189,6 +269,29 @@ class CardsController extends Controller
     }
 
 
+    /**
+     * @OA\Delete(
+     *     path="/api/cards_users/{id_card}",
+     *     summary="Exclui na base de dados os registros do cartão selecionado.",
+     *     tags={"Cartões"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successfully Done!"
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Unexpected error!"
+     *     ),
+     *     @OA\Response(
+     *         response=424,
+     *         description="Request error, validate the data and try again!"
+     *     ),
+     *      @OA\Response(
+     *         response=429,
+     *         description="Undefined Card!"
+     *     ),
+     * )
+     */
     public function destroy ($id) {
 
         try {

@@ -1,0 +1,346 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Documentação da API Despesas Cartão",
+        "description": "Descrição da API para gerenciar despesas de cartão",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/cards_users": {
+            "get": {
+                "tags": [
+                    "Cartões"
+                ],
+                "summary": "Lista todos os cartões cadastrados no sistema.",
+                "operationId": "27f77444ddd0bea32912cd63bd21f08e",
+                "responses": {
+                    "420": {
+                        "description": "No registration!"
+                    }
+                }
+            }
+        },
+        "/api/cards_users/": {
+            "post": {
+                "tags": [
+                    "Cartões"
+                ],
+                "summary": "Insere na base de dados os registros do novo cartão.",
+                "operationId": "72fd541d1a7867da985024d0cb9b9378",
+                "responses": {
+                    "200": {
+                        "description": "Successfully Done!"
+                    },
+                    "500": {
+                        "description": "Unexpected error!"
+                    },
+                    "424": {
+                        "description": "Request error, validate the data and try again!"
+                    },
+                    "425": {
+                        "description": "Undefined User!"
+                    },
+                    "428": {
+                        "description": "Card already registered for the user!"
+                    }
+                }
+            }
+        },
+        "/api/cards_users/{id_user}": {
+            "get": {
+                "tags": [
+                    "Cartões"
+                ],
+                "summary": "Lista todos os cartões, somente do usuário selecionado.",
+                "operationId": "3900c1b1c0c1816be152f63e1e63bd69",
+                "responses": {
+                    "420": {
+                        "description": "No registration!"
+                    },
+                    "425": {
+                        "description": "Undefined User!"
+                    }
+                }
+            }
+        },
+        "/api/cards_users/{id_card}": {
+            "put": {
+                "tags": [
+                    "Cartões"
+                ],
+                "summary": "Atualiza os dados somente do cartão selecionado já cadastrado.",
+                "operationId": "9ad2208248c8b986d2245318ca177317",
+                "responses": {
+                    "200": {
+                        "description": "Successfully Done!"
+                    },
+                    "500": {
+                        "description": "Unexpected error!"
+                    },
+                    "424": {
+                        "description": "Request error, validate the data and try again!"
+                    },
+                    "428": {
+                        "description": "Card already registered for the user!"
+                    },
+                    "429": {
+                        "description": "Undefined Card!"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Cartões"
+                ],
+                "summary": "Exclui na base de dados os registros do cartão selecionado.",
+                "operationId": "ef5bb2d0292a91fd4e8fb604a19f2a01",
+                "responses": {
+                    "200": {
+                        "description": "Successfully Done!"
+                    },
+                    "500": {
+                        "description": "Unexpected error!"
+                    },
+                    "424": {
+                        "description": "Request error, validate the data and try again!"
+                    },
+                    "429": {
+                        "description": "Undefined Card!"
+                    }
+                }
+            }
+        },
+        "/api/expenses_users": {
+            "get": {
+                "tags": [
+                    "Despesas"
+                ],
+                "summary": "Lista todas as despesas cadastradas no sistema.",
+                "operationId": "e005e3dc4a69c04fe4d7cfff7c37ee43",
+                "responses": {
+                    "420": {
+                        "description": "No registration!"
+                    }
+                }
+            }
+        },
+        "/api/expenses_users/": {
+            "post": {
+                "tags": [
+                    "Despesas"
+                ],
+                "summary": "Insere na base de dados os registros da nova despesa.",
+                "operationId": "ba89cf0424cd23313e225ae09169ea50",
+                "responses": {
+                    "200": {
+                        "description": "Successfully Done!"
+                    },
+                    "500": {
+                        "description": "Unexpected error!"
+                    },
+                    "424": {
+                        "description": "Request error, validate the data and try again!"
+                    },
+                    "429": {
+                        "description": "Undefined Card!"
+                    },
+                    "430": {
+                        "description": "It is not possible to enter this expense because the ID card balance ('') is insufficient!"
+                    },
+                    "431": {
+                        "description": "It is not possible to enter an expense on this ID card ('') because its balance is zero!"
+                    }
+                }
+            }
+        },
+        "/api/expenses_users/{id_user}": {
+            "get": {
+                "tags": [
+                    "Despesas"
+                ],
+                "summary": "Lista todas as despesas, somente do usuário selecionado.",
+                "operationId": "ccaff020c96af79c84bb9c513854acb3",
+                "responses": {
+                    "420": {
+                        "description": "No registration!"
+                    },
+                    "425": {
+                        "description": "Undefined User!"
+                    }
+                }
+            }
+        },
+        "/api/expenses_users/{id_expense}": {
+            "put": {
+                "tags": [
+                    "Despesas"
+                ],
+                "summary": "Atualiza os dados somente da despesa selecionada já cadastrada.",
+                "operationId": "800b4d39c8af065cd3a4a351f130311d",
+                "responses": {
+                    "200": {
+                        "description": "Successfully Done!"
+                    },
+                    "500": {
+                        "description": "Unexpected error!"
+                    },
+                    "424": {
+                        "description": "Request error, validate the data and try again!"
+                    },
+                    "430": {
+                        "description": "It is not possible to enter this expense because the ID card balance ('') is insufficient!"
+                    },
+                    "431": {
+                        "description": "It is not possible to enter an expense on this ID card ('') because its balance is zero!"
+                    },
+                    "432": {
+                        "description": "Undefined Expense!"
+                    },
+                    "433": {
+                        "description": "This expense does not refer to this card ID!"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Despesas"
+                ],
+                "summary": "Exclui na base de dados os registros da despesa selecionada.",
+                "operationId": "83d961026be1d7ffafd72bf77975430a",
+                "responses": {
+                    "200": {
+                        "description": "Successfully Done!"
+                    },
+                    "500": {
+                        "description": "Unexpected error!"
+                    },
+                    "424": {
+                        "description": "Request error, validate the data and try again!"
+                    },
+                    "432": {
+                        "description": "Undefined Expense!"
+                    }
+                }
+            }
+        },
+        "/api/users": {
+            "get": {
+                "tags": [
+                    "Usuários"
+                ],
+                "summary": "Lista todos os usuários cadastrados no sistema.",
+                "operationId": "c5ccc940808f87add4da9d1db1317605",
+                "responses": {
+                    "420": {
+                        "description": "No registration!"
+                    }
+                }
+            }
+        },
+        "/api/users/": {
+            "post": {
+                "tags": [
+                    "Usuários"
+                ],
+                "summary": "Insere na base de dados os registros do novo usuário.",
+                "operationId": "f35f51ea578a0d55fd5a86139ea9d086",
+                "responses": {
+                    "200": {
+                        "description": "Successfully Done!"
+                    },
+                    "500": {
+                        "description": "Unexpected error!"
+                    },
+                    "422": {
+                        "description": "User already registered!"
+                    },
+                    "423": {
+                        "description": "Email already registered with another user!"
+                    },
+                    "424": {
+                        "description": "Request error, validate the data and try again!"
+                    }
+                }
+            }
+        },
+        "/api/users/{id_user}": {
+            "get": {
+                "tags": [
+                    "Usuários"
+                ],
+                "summary": "Lista os dados somente do usuário selecionado.",
+                "operationId": "16e5be37127bdde0f97fbc61b53c01bc",
+                "responses": {
+                    "420": {
+                        "description": "No registration!"
+                    },
+                    "425": {
+                        "description": "Undefined User!"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Usuários"
+                ],
+                "summary": "Atualiza os dados somente do usuário selecionado já cadastrado.",
+                "operationId": "603fa937b43a1c37da647a9a870e22b4",
+                "responses": {
+                    "200": {
+                        "description": "Successfully Done!"
+                    },
+                    "500": {
+                        "description": "Unexpected error!"
+                    },
+                    "424": {
+                        "description": "Request error, validate the data and try again!"
+                    },
+                    "425": {
+                        "description": "Undefined User!"
+                    },
+                    "426": {
+                        "description": "There is already a user with these credentials registered!"
+                    },
+                    "427": {
+                        "description": "There is already a user with this email registered!"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Usuários"
+                ],
+                "summary": "Exclui na base de dados os registros do usuário selecionado.",
+                "operationId": "5e8170d9db1d778080bab6962b922ccd",
+                "responses": {
+                    "200": {
+                        "description": "Successfully Done!"
+                    },
+                    "500": {
+                        "description": "Unexpected error!"
+                    },
+                    "424": {
+                        "description": "Request error, validate the data and try again!"
+                    },
+                    "425": {
+                        "description": "Undefined User!"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Cartões",
+            "description": "Cartões"
+        },
+        {
+            "name": "Despesas",
+            "description": "Despesas"
+        },
+        {
+            "name": "Usuários",
+            "description": "Usuários"
+        }
+    ]
+}

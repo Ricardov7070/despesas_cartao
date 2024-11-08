@@ -26,6 +26,17 @@ class ExpensesController extends Controller
     }
 
 
+    /**
+     * @OA\Get(
+     *     path="/api/expenses_users",
+     *     summary="Lista todas as despesas cadastradas no sistema.",
+     *     tags={"Despesas"},
+     *     @OA\Response(
+     *         response=420,
+     *         description="No registration!"
+     *     ),
+     * )
+     */
     public function index () {
 
         $id = "";
@@ -38,6 +49,37 @@ class ExpensesController extends Controller
     }
 
 
+    /**
+     * @OA\Post(
+     *     path="/api/expenses_users/",
+     *     summary="Insere na base de dados os registros da nova despesa.",
+     *     tags={"Despesas"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successfully Done!"
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Unexpected error!"
+     *     ),
+     *     @OA\Response(
+     *         response=424,
+     *         description="Request error, validate the data and try again!"
+     *     ),
+     *      @OA\Response(
+     *         response=429,
+     *         description="Undefined Card!"
+     *     ),
+     *     @OA\Response(
+     *         response=430,
+     *         description="It is not possible to enter this expense because the ID card balance ('') is insufficient!"
+     *     ),
+     *     @OA\Response(
+     *         response=431,
+     *         description="It is not possible to enter an expense on this ID card ('') because its balance is zero!"
+     *     ),
+     * )
+     */
     public function store (Request $request) {
 
         try {
@@ -114,11 +156,25 @@ class ExpensesController extends Controller
             ], 500);
 
         }
-       
 
     }
 
 
+    /**
+     * @OA\Get(
+     *     path="/api/expenses_users/{id_user}",
+     *     summary="Lista todas as despesas, somente do usuário selecionado.",
+     *     tags={"Despesas"},
+     *     @OA\Response(
+     *         response=420,
+     *         description="No registration!"
+     *     ),
+     *      @OA\Response(
+     *         response=425,
+     *         description="Undefined User!"
+     *     ),
+     * )
+     */
     public function show ($id)  {
         
         $existingUser = $this->modelUsers->searchUser($id);
@@ -142,6 +198,41 @@ class ExpensesController extends Controller
     }
 
   
+    /**
+     * @OA\Put(
+     *     path="/api/expenses_users/{id_expense}",
+     *     summary="Atualiza os dados somente da despesa selecionada já cadastrada.",
+     *     tags={"Despesas"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successfully Done!"
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Unexpected error!"
+     *     ),
+     *     @OA\Response(
+     *         response=424,
+     *         description="Request error, validate the data and try again!"
+     *     ),
+     *     @OA\Response(
+     *         response=430,
+     *         description="It is not possible to enter this expense because the ID card balance ('') is insufficient!"
+     *     ),
+     *     @OA\Response(
+     *         response=431,
+     *         description="It is not possible to enter an expense on this ID card ('') because its balance is zero!"
+     *     ),
+     *     @OA\Response(
+     *         response=432,
+     *         description="Undefined Expense!"
+     *     ),
+     *      @OA\Response(
+     *         response=433,
+     *         description="This expense does not refer to this card ID!"
+     *     ),
+     * )
+     */
     public function update (Request $request, $id) {
 
         try {
@@ -230,6 +321,29 @@ class ExpensesController extends Controller
     }
 
 
+    /**
+     * @OA\Delete(
+     *     path="/api/expenses_users/{id_expense}",
+     *     summary="Exclui na base de dados os registros da despesa selecionada.",
+     *     tags={"Despesas"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successfully Done!"
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Unexpected error!"
+     *     ),
+     *     @OA\Response(
+     *         response=424,
+     *         description="Request error, validate the data and try again!"
+     *     ),
+     *      @OA\Response(
+     *         response=432,
+     *         description="Undefined Expense!"
+     *     ),
+     * )
+     */
     public function destroy ($id) {
 
         try {

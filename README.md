@@ -60,7 +60,7 @@ Este projeto foi desenvolvido em uma aplicação Laravel para gerenciamento e ca
    ** Gerenciamento de Usuário:
    - **GET** `/api/users/` - Lista todos os usuários cadastrados no sistema.
    - **GET** `/api/users/{id_user}` - Lista os dados somente do usuário selecionado.
-   - **POST** `/api/users/` - Insere na base de dados os registros do novo usuário
+   - **POST** `/api/users/` - Insere na base de dados os registros do novo usuário.
    - **PUT** `/api/users/{id_user}` - Atualiza os dados somente do usuário selecionado já cadastrado.
    - **DELETE** `/api/users/{id_user}` - Exclui na base de dados os registros do usuário selecionado.
 
@@ -78,7 +78,7 @@ Este projeto foi desenvolvido em uma aplicação Laravel para gerenciamento e ca
    - **GET** `/api/expenses_users/{id_user}` - Lista todas as despesas, somente do usuário selecionado.
    - **POST** `/api/expenses_users/` - Insere na base de dados os registros da nova despesa.
    - **PUT** `/api/expenses_users/{id_expense}` - Atualiza os dados somente da despesa selecionada já cadastrada.
-   - **DELETE** `/api/expenses_users/{id_expense}` - Exclui na base de dados os registros da despesa selecionada
+   - **DELETE** `/api/expenses_users/{id_expense}` - Exclui na base de dados os registros da despesa selecionada.
 
 ## Emails
 

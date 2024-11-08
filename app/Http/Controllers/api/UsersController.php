@@ -20,6 +20,17 @@ class UsersController extends Controller
     }
 
 
+    /**
+     * @OA\Get(
+     *     path="/api/users",
+     *     summary="Lista todos os usuários cadastrados no sistema.",
+     *     tags={"Usuários"},
+     *     @OA\Response(
+     *         response=420,
+     *         description="No registration!"
+     *     ),
+     * )
+     */
     public function index () {
 
         $id = "";
@@ -32,6 +43,33 @@ class UsersController extends Controller
     }
 
 
+    /**
+     * @OA\Post(
+     *     path="/api/users/",
+     *     summary="Insere na base de dados os registros do novo usuário.",
+     *     tags={"Usuários"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successfully Done!"
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Unexpected error!"
+     *     ),
+     *      @OA\Response(
+     *         response=422,
+     *         description="User already registered!"
+     *     ),
+     *     @OA\Response(
+     *         response=423,
+     *         description="Email already registered with another user!"
+     *     ),
+     *     @OA\Response(
+     *         response=424,
+     *         description="Request error, validate the data and try again!"
+     *     ),
+     * )
+     */
     public function store (Request $request) {
 
         try {
@@ -98,6 +136,21 @@ class UsersController extends Controller
     }
 
 
+    /**
+     * @OA\Get(
+     *     path="/api/users/{id_user}",
+     *     summary="Lista os dados somente do usuário selecionado.",
+     *     tags={"Usuários"},
+     *     @OA\Response(
+     *         response=420,
+     *         description="No registration!"
+     *     ),
+     *      @OA\Response(
+     *         response=425,
+     *         description="Undefined User!"
+     *     ),
+     * )
+     */
     public function show ($id)  {
         
         $existingUser = $this->modelUsers->searchUser($id);
@@ -119,6 +172,37 @@ class UsersController extends Controller
     }
 
   
+    /**
+     * @OA\Put(
+     *     path="/api/users/{id_user}",
+     *     summary="Atualiza os dados somente do usuário selecionado já cadastrado.",
+     *     tags={"Usuários"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successfully Done!"
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Unexpected error!"
+     *     ),
+     *     @OA\Response(
+     *         response=424,
+     *         description="Request error, validate the data and try again!"
+     *     ),
+     *     @OA\Response(
+     *         response=425,
+     *         description="Undefined User!"
+     *     ),
+     *      @OA\Response(
+     *         response=426,
+     *         description="There is already a user with these credentials registered!"
+     *     ),
+     *     @OA\Response(
+     *         response=427,
+     *         description="There is already a user with this email registered!"
+     *     ),
+     * )
+     */
     public function update (Request $request, $id) {
 
         try {
@@ -204,6 +288,29 @@ class UsersController extends Controller
     }
 
 
+    /**
+     * @OA\Delete(
+     *     path="/api/users/{id_user}",
+     *     summary="Exclui na base de dados os registros do usuário selecionado.",
+     *     tags={"Usuários"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successfully Done!"
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Unexpected error!"
+     *     ),
+     *     @OA\Response(
+     *         response=424,
+     *         description="Request error, validate the data and try again!"
+     *     ),
+     *      @OA\Response(
+     *         response=425,
+     *         description="Undefined User!"
+     *     ),
+     * )
+     */
     public function destroy ($id) {
 
         try {

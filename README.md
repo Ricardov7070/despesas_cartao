@@ -80,7 +80,7 @@ Este projeto foi desenvolvido em uma aplicação Laravel para gerenciamento e ca
    - **PUT** `/api/expenses_users/{id_expense}` - Atualiza os dados somente da despesa selecionada já cadastrada.
    - **DELETE** `/api/expenses_users/{id_expense}` - Exclui na base de dados os registros da despesa selecionada
 
-## Observer e Emails
+## Emails
 
 O projeto utiliza uma funcionalidade de envio de emails para cada interação que o usuário solicitar como:
  - Novas despesas criadas;

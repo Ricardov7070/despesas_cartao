@@ -93,8 +93,8 @@ O projeto utiliza uma funcionalidade de envio de emails para cada interação qu
 
 O projeto inclui dois tipos de categoria de usuários:
 
-- **administrator:** Possui permissão para visualizar suas informações e também a de todos os usuários cadastrados. Esta classificação recebe todos os emails enviados do sistema. 
-- **standard:** Pode visualizar somente suas informações cadastradas no sistema.
+- **Administrator:** Possui permissão para visualizar suas informações e também a de todos os usuários cadastrados. Esta classificação recebe todos os emails enviados do sistema. 
+- **Standard:** Pode visualizar somente suas informações cadastradas no sistema.
 
 ## Ferramentas
 

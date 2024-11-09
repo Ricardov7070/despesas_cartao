@@ -223,6 +223,20 @@
                 }
             }
         },
+        "/api/type_users": {
+            "get": {
+                "tags": [
+                    "Categoria de Usuários"
+                ],
+                "summary": "Lista todas categorias de usuários cadastradas no sistema.",
+                "operationId": "ec4f57ba31484cfddce865ac8b8c0698",
+                "responses": {
+                    "420": {
+                        "description": "No registration!"
+                    }
+                }
+            }
+        },
         "/api/users": {
             "get": {
                 "tags": [
@@ -337,6 +351,10 @@
         {
             "name": "Despesas",
             "description": "Despesas"
+        },
+        {
+            "name": "Categoria de Usuários",
+            "description": "Categoria de Usuários"
         },
         {
             "name": "Usuários",

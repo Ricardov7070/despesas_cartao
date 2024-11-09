@@ -18,9 +18,24 @@ class TypeUsersController extends Controller
     }
 
 
+    /**
+     * @OA\Get(
+     *     path="/api/type_users",
+     *     summary="Lista todas categorias de usuários cadastradas no sistema.",
+     *     tags={"Categoria de Usuários"},
+     *     @OA\Response(
+     *         response=420,
+     *         description="No registration!"
+     *     ),
+     * )
+     */
     public function index () {
 
-       return $this->modelTypeUsers->searchTypeUser();
+       $typeData = $this->modelTypeUsers->searchTypeUser();
+
+       return empty($typeData) 
+                ? response()->json(['alert' => 'No registration!'], 420)
+                : $typeData;
 
     }
 

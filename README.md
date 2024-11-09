@@ -71,8 +71,8 @@ Este projeto foi desenvolvido em uma aplicação Laravel para gerenciamento e ca
    - **GET** `/api/cards_users/` - Lista todos os cartões cadastrados no sistema.
    - **GET** `/api/cards_users/{id_user}` - Lista todos os cartões, somente do usuário selecionado.
    - **POST** `/api/cards_users/` - Insere na base de dados os registros do novo cartão.
-   - **PUT** `/api/users/{id_card}` - Atualiza os dados somente do cartão selecionado já cadastrado.
-   - **DELETE** `/api/users/{id_card}` - Exclui na base de dados os registros do cartão selecionado.
+   - **PUT** `/api/cards_users/{id_card}` - Atualiza os dados somente do cartão selecionado já cadastrado.
+   - **DELETE** `/api/cards_users/{id_card}` - Exclui na base de dados os registros do cartão selecionado.
 
 
    ** Gerenciamento de Despesa:
@@ -81,6 +81,41 @@ Este projeto foi desenvolvido em uma aplicação Laravel para gerenciamento e ca
    - **POST** `/api/expenses_users/` - Insere na base de dados os registros da nova despesa.
    - **PUT** `/api/expenses_users/{id_expense}` - Atualiza os dados somente da despesa selecionada já cadastrada.
    - **DELETE** `/api/expenses_users/{id_expense}` - Exclui na base de dados os registros da despesa selecionada.
+
+8. **Parâmetros:**
+
+As rotas abaixo recebem os seguintes parâmetros:
+
+- **POST** `/api/users/`:
+   'name' => Nome do Usuário;
+   'email' => Email do Usuário;
+   'password' => Senha do usuário;
+   'type' => Id de Identificação do Tipo de Categoria do Usuário;
+
+- **PUT** `/api/users/{id_user}`:
+   'name' => Nome do Usuário;
+   'email' => Email do Usuário;
+   'password' => Senha do usuário;
+   'type' => Tipo de Categoria do Usuário;
+
+- **POST** `/api/cards_users/`:
+   'number' => Número do Cartão;
+   'balance' => Saldo do Cartão;
+   'user' => Id de Identificação do Usuário;
+
+- **PUT** `/api/cards_users/{id_card}`;
+   'number' => Número do Cartão;
+   'balance' => Saldo do Cartão;
+
+- **POST** `/api/expenses_users/`:
+   'id_card' => Id de Identificação do Cartão;
+   'description' => Descrição da Despesa;
+   'expense' => Valor da Despesa;
+
+- **PUT** `/api/expenses_users/{id_expense}`:
+   'id_card' => Id de Identificação do Cartão;
+   'description' => Descrição da Despesa;
+   'expense' => Valor da Despesa;
 
 ## Emails
 

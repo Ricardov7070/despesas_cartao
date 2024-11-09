@@ -84,7 +84,7 @@ Este projeto foi desenvolvido em uma aplicação Laravel para gerenciamento e ca
 
 8. **Parâmetros:**
 
-As rotas abaixo recebem os seguintes parâmetros:
+  As rotas abaixo recebem os seguintes parâmetros:
 
 - **POST** `/api/users/`:
    'name' => Nome do Usuário;

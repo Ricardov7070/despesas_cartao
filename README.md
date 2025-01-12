@@ -82,9 +82,12 @@ Este projeto foi desenvolvido em uma aplicação Laravel para gerenciamento e ca
    - **PUT** `/api/expenses_users/{id_expense}` - Atualiza os dados somente da despesa selecionada já cadastrada.
    - **DELETE** `/api/expenses_users/{id_expense}` - Exclui na base de dados os registros da despesa selecionada.
 
-8. **Parâmetros:**
+   ** Categoria de Usuários:
+   - **GET** `/api/type_users/` - Lista todas as categorias de usuários cadastradas.
 
-As rotas abaixo recebem os seguintes parâmetros:
+9. **Parâmetros:**
+
+  As rotas abaixo recebem os seguintes parâmetros:
 
 - **POST** `/api/users/`:
    'name' => Nome do Usuário;

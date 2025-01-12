@@ -1,10 +1,10 @@
-# Projeto Despesas de Cartão por Usuário
+# Projeto Despesas de Cartão por Usuário 
 
 Este projeto é uma aplicação Laravel para gerenciamento de despesas com autenticação de usuário utilizando Sanctum. O sistema permite criar, ler, atualizar e excluir despesas e inclui notificações para o usuário quando uma nova despesa é criada.
 
 Este projeto foi desenvolvido em uma aplicação Laravel para gerenciamento e cadastro de despesas de um usuário a partir de um cartão. O sistema permite criar, atualizar, excluir, listar e realizar envio de notificacaoes via email dos dados dos usuários cadastrados, dados de cartões inseridos e informações de despesas lançadas.
 
-## Tecnologias e Ferramentas
+## Tecnologias e Ferramentas 💡
 
 - **PHP:** 8.2.12
 - **Laravel:** 10.48.22
@@ -18,7 +18,7 @@ Este projeto foi desenvolvido em uma aplicação Laravel para gerenciamento e ca
 - PHP 8.2.12
 - Composer 2.7.7
 
-## Configuração do Projeto
+## Configuração do Projeto 🛠️
 
 1. **Clonar o Repositório:**
 
@@ -117,7 +117,7 @@ As rotas abaixo recebem os seguintes parâmetros:
    'description' => Descrição da Despesa;
    'expense' => Valor da Despesa;
 
-## Emails
+## Emails ✉️
 
 O projeto utiliza uma funcionalidade de envio de emails para cada interação que o usuário solicitar como:
  - Novas despesas criadas;
@@ -128,21 +128,21 @@ O projeto utiliza uma funcionalidade de envio de emails para cada interação qu
 
 Não esqueça de realizar as configurações do seu provedor de email SMTP no arquivo .env antes de usar essa funcionalidade!
 
-## Roles e Permissões
+## Roles e Permissões 🤝
 
 O projeto inclui dois tipos de categoria de usuários:
 
 - **Administrator:** Possui permissão para visualizar suas informações e também a de todos os usuários cadastrados. Esta classificação recebe todos os emails enviados do sistema. 
 - **Standard:** Pode visualizar somente suas informações cadastradas no sistema.
 
-## Ferramentas
+## Ferramentas 🪛
 
 - **Mailtrap:** Usado para testar o envio de e-mails durante o desenvolvimento.
 - **Insomnia:** Utilizado para testar e documentar as rotas da API.
-- **Swagger:** Utilizado para documentar as rotas da APIResources
+- **Swagger:** Utilizado para documentar as rotas da APIResources.
   `php artisan l5-swagger:generate`
 
-## Contribuição
+## Contribuição 🤲
 
 Contribuições são bem-vindas! Se você encontrar problemas ou tiver sugestões, sinta-se à vontade para abrir uma issue ou enviar um pull request.
 
